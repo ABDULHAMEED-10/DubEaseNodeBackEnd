@@ -117,7 +117,7 @@ exports.forgetPassword = catchAsncError(async (req, res, next) => {
             .digest("hex");
         user.resetPasswordExpire = Date.now() + 5 * 60 * 1000;
         await user.save({ validateBeforeSave: false });
-        const resetPasswordURL = `${req.protocol}://localhost:3000/password/reset/${resetToken}`;
+        const resetPasswordURL = `${req.protocol}://${req.get('host')}/password/reset/${resetToken}`;
         const message = `<p><strong>Subject:</strong> Password Reset Request</p>
     <br>
     <p>Dear ${user.name},</p>
