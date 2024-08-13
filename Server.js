@@ -11,7 +11,7 @@ process.on("uncaughtExceptionMonitor", (err) => {
         process.exit(1);
     });
 });
-dotenv.config({ path: "Backend/config/config.env" });
+dotenv.config({ path: "./config/config.env" });
 connectDatabase();
 
 
